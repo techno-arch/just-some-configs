@@ -7,6 +7,8 @@ export ozone_platform='wayland'
 [[ $- != *i* ]] && return
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
+alias watch='watch -n1'
+alias pacmanqq='pacman -Qq |grep'
 #PS1='[\u@\h \W]\$ '
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
 PS1='[\u] ($(pwd)) -➤ '
