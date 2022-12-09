@@ -1,15 +1,30 @@
 #
 # ~/.bashrc
 #
+#----global-variables----
 export GST_VAAPI_ALL_DRIVERS=1
 export ozone_platform='wayland'
-# If not running interactively, don't do anything
+
+#-interactive-shell-check-
 [[ $- != *i* ]] && return
+
+#-------functions--------
+function webdrive() {
+   local drivename="$1"
+   local drname="$2"
+   rclone mount --vfs-cache-mode full "${drivename}: ${drname}"
+}
+
+#--------aliases---------
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias watch='watch -n1'
 alias pacmanqq='pacman -Qq |grep'
-#PS1='[\u@\h \W]\$ '
-___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
-PS1='[\u] ($(pwd)) -➤ '
+alias gdrive='webdrive mdrive /home/$(whoami)/gdrive'
+
+
+#-------bash-prompt-------
+PS1='[\u] ($(pwd)) -➤ ' #looks like    [username] (/home/pc) -➤
+
+#--shell-start-commands--
 fastfetch
