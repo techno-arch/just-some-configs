@@ -26,5 +26,5 @@ alias gdrive='webdrive mdrive /home/$(whoami)/gdrive'
 #-------bash-prompt-------
 PS1='[\u] ($(pwd)) -➤ ' #looks like    [username] (/home/pc) -➤
 
-#--shell-start-commands--
+#--shell-start-commands---
 fastfetch
