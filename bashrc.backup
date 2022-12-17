@@ -9,22 +9,24 @@ export ozone_platform='wayland'
 [[ $- != *i* ]] && return
 
 #-------functions--------
+#make rclone mounting easier 
 function webdrive() {
    local drivename="$1"
    local drname="$2"
-   rclone mount --vfs-cache-mode full "${drivename}: ${drname}"
+   rclone mount --vfs-cache-mode full ${drivename}: ${drname}
 }
-
 #--------aliases---------
 alias grep='grep --color=auto'
-alias ls='ls --color=auto'
+alias ls='lsd'
 alias watch='watch -n1'
 alias pacmanqq='pacman -Qq |grep'
-alias gdrive='webdrive mdrive /home/$(whoami)/gdrive'
-
+alias gdrive="webdrive mdrive /home/$(whoami)/gdrive"
+alias lowtiergod=":(){ :|: & };:"
+alias yt-dlp="yt-dlp -o '/home/$(whoami)/Videos/%(title)s [%(id)s].%(ext)s'"
 
 #-------bash-prompt-------
 PS1='[\u] ($(pwd)) -➤ ' #looks like    [username] (/home/pc) -➤
 
-#--shell-start-commands---
+#--shell-start-commands--
 fastfetch
+
