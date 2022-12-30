@@ -9,12 +9,28 @@ export ozone_platform='wayland'
 [[ $- != *i* ]] && return
 
 #-------functions--------
-#make rclone mounting easier 
+
+#easy rclone mount
 function webdrive() {
    local drivename="$1"
    local drname="$2"
    rclone mount --vfs-cache-mode full ${drivename}: ${drname}
 }
+
+# quick and dirty batch file convertion to png might fuck up colors
+function pngbatch() {
+   local intype="$1"
+   if [ -z ${intype} ];
+   then
+         echo "\$error: no input file specified"
+   else
+         for file in *${intype}
+         do
+            convert "$file" "$(basename "$file" ${intype}).png"
+         done
+   fi
+}
+
 #--------aliases---------
 alias grep='grep --color=auto'
 alias ls='lsd'
@@ -23,7 +39,7 @@ alias pacmanqq='pacman -Qq |grep'
 alias gdrive="webdrive mdrive /home/$(whoami)/gdrive"
 alias lowtiergod=":(){ :|: & };:"
 alias yt-dlp="yt-dlp -o '/home/$(whoami)/Videos/%(title)s [%(id)s].%(ext)s'"
-
+alias pip3.9="python3.9 -m pip"
 #-------bash-prompt-------
 PS1='[\u] ($(pwd)) -➤ ' #looks like    [username] (/home/pc) -➤
 
